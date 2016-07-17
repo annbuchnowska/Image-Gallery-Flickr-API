@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flickr gallery</title>
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/thumbnails.css" />
+</head>
+<body>
+  <header class="gallery-box">
+    <h1>Flickr gallery</h1>
+    <form class="js-form-search form-search" action="/search" method="get" role="search">
+      <label for="query">Search:</label>
+      <input type="search" name="query" id="query" placeholder="Search" required />
+      <input type="submit" onclick="loader_ajax_request()" value="Search" />
+    </form>
+  </header>
+
+  <div id="example-placeholder"></div>
+
+  <div class="gallery-box thumbnails">
+    <ul class="js-thumbnails__list thumbnails__list"></ul>
+    <ol class="js-thumbnails__pager thumbnails__pager"></ol>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+  function loader_ajax_request() {
+    $('#example-placeholder').html('<svg><image class="rockandroll" xlink:href="img/RockNRollGuitarist2.svg" width="114" height="154" alt="rockandroll-placeloader"/></svg>');
+    $('#example-placeholder').show();
+    $('.thumbnails__list, .thumbnails__pager').hide();
+    setTimeout('loader_ajax_request_go()', 3000);
+  }
+  function loader_ajax_request_go() {
+    $('#example-placeholder').hide();
+    $('.thumbnails__list, .thumbnails__pager').show();
+  }
+  </script>
+  <script src="js/utility.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/flickr.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
